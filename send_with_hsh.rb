@@ -33,24 +33,24 @@ end
 
 s = Song.new
 s.send(:foo, "Adenium obesum") # => 'Desert Adenium obesum'
-s.send(:prvt_biz)			         # => 'Fields of Gold'
-s.public_send(:bar) 		       # => 'Shape of My Heart'
-s.public_send(:prvt_biz)       # => NoMethodError
+s.send(:prvt_biz) # => 'Fields of Gold'
+s.public_send(:bar) # => 'Shape of My Heart'
+s.public_send(:prvt_biz) # => NoMethodError
 
 # __send__
 def s.send(time) = AlbumJob.perform_at(time, "The Bridge")
-s.send(Time.now + 60 * 60 * 24)    # => Enqueues process``
-s.__send__(:foo) 			             # => 'Desert Rose'
+s.send(Time.now + 60 * 60 * 24) # => Enqueues process``
+s.__send__(:foo) # => 'Desert Rose'
 
 # [2] ProdCode tricks
 SNG_MAP =
   Hash.new { raise "ErrObj Here" }
     .merge(f: :foo, b: :bar) # Your obj's API map here
 
-params = {type: :f} 		              # assuming dynamic params
+params = {type: :f} # assuming dynamic params
 s.public_send(SNG_MAP[params[:type]]) # => Desert Rose"
 
-params[:type] = :qux			            # invalid method name
+params[:type] = :qux # invalid method name
 s.public_send(SNG_MAP[params[:type]]) # => RuntimeError: ErrObj Here"
 
 # one time one liner with no-key default
