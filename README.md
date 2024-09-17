@@ -2,7 +2,7 @@
 
 ## Description
 
-This section will contain short articles documenting various Ruby language features. Each article will provide a concise overview, practical examples, and best practices to help developers understand and effectively utilize Ruby's capabilities. 
+Each article will provide a concise overview, practical examples, and best practices to help developers understand and effectively utilize Ruby's capabilities. 
 
 ### Features
 
